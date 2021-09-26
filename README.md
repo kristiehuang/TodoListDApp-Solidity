@@ -1,5 +1,6 @@
 # Todo List Dapp (Solidity + JS)
-https://www.dappuniversity.com/articles/blockchain-app-tutorial
+
+my first little solidity dapp! followed the tutorial from [dapp university](https://www.dappuniversity.com/articles/blockchain-app-tutorial); nothing fancy, but it's a place to start.
 
 https://user-images.githubusercontent.com/27475332/134795954-e3534869-3e46-4b28-963f-ff134bd44a5e.mov
 
