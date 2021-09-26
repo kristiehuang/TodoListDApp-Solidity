@@ -11,6 +11,7 @@ App = {
   
     // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
     loadWeb3: async () => {
+      const Web3 = require('web3')
       if (typeof web3 !== 'undefined') {
         App.web3Provider = web3.currentProvider
         web3 = new Web3(web3.currentProvider)
@@ -45,9 +46,11 @@ App = {
     loadAccount: async () => {
       // Set the current blockchain account
       App.account = web3.eth.accounts[0]
+      console.log(App.account)
     },
   
     loadContract: async () => {
+      // TRUFFLE CONTRACT = javascript version of the smart contract that allows us to call it
       // Create a JavaScript version of the smart contract
       const todoList = await $.getJSON('TodoList.json')
       App.contracts.TodoList = TruffleContract(todoList)
@@ -95,7 +98,7 @@ App = {
         $newTaskTemplate.find('input')
                         .prop('name', taskId)
                         .prop('checked', taskCompleted)
-                        // .on('click', App.toggleCompleted)
+                        .on('click', App.toggleCompleted)
   
         // Put the task in the correct list
         if (taskCompleted) {
