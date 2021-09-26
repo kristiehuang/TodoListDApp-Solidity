@@ -15,6 +15,11 @@ contract TodoList {
         bool completed
     );
 
+    event ToggleCompleted(
+        uint taskId,
+        bool completed
+    );
+
     // State Variables /////////////////////////
     // scoped for entire smart contract
     // public keyword: Solidity auto creates a taskCount() fxn to read value outside of contract
@@ -35,6 +40,14 @@ contract TodoList {
     }
     // create event to track every time something happens in code, so that
     // external listeners can listen to these events
+
+    // Mark task as completed / uncompleted
+    function toggleCompleted(uint _taskId) public {
+        Task memory task = tasks[_taskId];
+        task.completed = !task.completed;
+        tasks[_taskId] = task; // Need to put back into dict
+        emit ToggleCompleted(_taskId, task.completed);
+    }
 
 
 }
